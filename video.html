@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player - VideoPlay.fun</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="back-btn">← Back to Videos</a>
+            <h1 class="logo">VideoPlay.fun</h1>
+        </div>
+    </header>
+
+    <!-- Main Video Player -->
+    <main class="main">
+        <div class="container">
+            <div class="video-player-section">
+                <video 
+                    id="mainVideoPlayer" 
+                    controls 
+                    autoplay 
+                    class="main-video-player">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="video-info">
+                    <h2 id="videoTitle">Video Title</h2>
+                    <p id="videoDescription">Video description will appear here</p>
+                </div>
+            </div>
+
+            <!-- Related Videos -->
+            <div class="related-videos-section">
+                <h3>Related Videos</h3>
+                <div class="related-videos-grid" id="relatedVideos">
+                    <!-- Related videos will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 VideoPlay.fun - All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
