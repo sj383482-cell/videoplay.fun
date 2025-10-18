@@ -164,16 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 searchVideos();
-            }
-      }
-    // 🔗 Open SmartLink First, then video page
-function openVideoWithAd(videoId) {
-    // Pehle Smartlink new tab me open karega
-    window.open("https://www.effectivegatecpm.com/b8gampxm?key=46a40ebbc0d8356f45c09e2e962e0b8f", "_blank");
-    
-    // 1 second baad video page open hoga
-    setTimeout(() => {
-        window.location.href = `video.html?id=${videoId}`;
-    }, 1000);
 }
+        });
+    } 
 });
