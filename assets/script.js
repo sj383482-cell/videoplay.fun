@@ -49,7 +49,7 @@ function displayVideos(videos) {
     }
     
     videoGrid.innerHTML = videos.map(video => `
-        <div class="video-card"onclick="openVideo(${video.id})"
+        <div class="video-card" onclick="openVideo(${video.id})">
             <div class="video-thumbnail">
                 <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjdmYWZjIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk0YTBhYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlZpZGVvIFRodW1ibmFpbDwvdGV4dD48L3N2Zz4='">
                 <div class="video-duration">${video.duration}</div>
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 searchVideos();
-}
+            }
         });
-    } 
+    }
 });
