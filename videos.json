@@ -1,0 +1,32 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "title": "Beautiful Nature Scenery",
+      "description": "Experience the breathtaking beauty of nature with this amazing video showcasing stunning landscapes and wildlife.",
+      "thumbnail": "https://via.placeholder.com/300x160/4A90E2/FFFFFF?text=Nature+Video",
+      "videoUrl": "https://videoplay-fun.b-cdn.net/file_example_MP4_1280_10MG.mp4",
+      "duration": "2:30",
+      "category": "Nature"
+    },
+    {
+      "id": 2,
+      "title": "jhumka bibi ka.",
+      "description": "jhumka gira web series.",
+      "thumbnail": "https://videoplay-fun.b-cdn.net/IMG_20251017_221025.jpg",
+      "videoUrl": "https://videoplay-fun.b-cdn.net/Jhumke_I_Ullu_Originals_I_Official_Trailer_I_Releasing_on_26th_April_2022(720p).mp4",
+      "duration": "4:15",
+      "category": "fun"
+    },
+  
+    {
+      "id": 3,
+      "title": "Music Performance Live",
+      "description": "https://videoplay-fun.b-cdn.net/pexels-flowerstofox-27082077.jpg.",
+      "thumbnail": "https://via.placeholder.com/300x160/9013FE/FFFFFF?text=Live+Music",
+      "videoUrl": "https://videoplay-fun.b-cdn.net/Baap_Beta_Official_Trailer___Satrangii___Releasing_on_21st_May_Only_On_Atrangii_App(720p).mp4",
+      "duration": "5:45",
+      "category": "Music"
+    }
+  ]
+}
