@@ -49,7 +49,7 @@ function displayVideos(videos) {
     }
     
     videoGrid.innerHTML = videos.map(video => `
-        <div class="video-card" onclick="openVideo(${video.id})">
+        <div class="video-card" onclick="openVideoWithAd(${video.id})">
             <div class="video-thumbnail">
                 <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjdmYWZjIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk0YTBhYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlZpZGVvIFRodW1ibmFpbDwvdGV4dD48L3N2Zz4='">
                 <div class="video-duration">${video.duration}</div>
@@ -57,6 +57,28 @@ function displayVideos(videos) {
             <div class="video-info">
                 <h3 class="video-title">${video.title}</h3>
                 <p class="video-description">${video.description}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Display related videos
+function displayRelatedVideos(videos) {
+    const relatedGrid = document.getElementById('relatedVideos');
+    
+    if (videos.length === 0) {
+        relatedGrid.innerHTML = '<p>No related videos found.</p>';
+        return;
+    }
+    
+    relatedGrid.innerHTML = videos.map(video => `
+        <div class="video-card" onclick="openVideoWithAd(${video.id})">
+            <div class="video-thumbnail">
+                <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjdmYWZjIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk0YTBhYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlZpZGVvIFRodW1ibmFpbDwvdGV4dD48L3N2Zz4='">
+                <div class="video-duration">${video.duration}</div>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">${video.title}</h3>
             </div>
         </div>
     `).join('');
@@ -80,9 +102,15 @@ function searchVideos() {
     displayVideos(filteredVideos);
 }
 
-// Open video in new page
-function openVideo(videoId) {
-    window.location.href = `video.html?id=${videoId}`;
+// Open video page (with Smartlink)
+function openVideoWithAd(videoId) {
+    // 🔹 Open Adsterra Smartlink first
+    window.open("https://www.effectivegatecpm.com/b8gampxm?key=46a40ebbc0d8356f45c09e2e962e0b8f", "_blank");
+    
+    // 🔹 After 1 second, open the video page
+    setTimeout(() => {
+        window.location.href = `video.html?id=${videoId}`;
+    }, 1000);
 }
 
 // Video page functionality
@@ -125,28 +153,6 @@ async function loadVideoPage() {
     } finally {
         showLoading(false);
     }
-}
-
-// Display related videos
-function displayRelatedVideos(videos) {
-    const relatedGrid = document.getElementById('relatedVideos');
-    
-    if (videos.length === 0) {
-        relatedGrid.innerHTML = '<p>No related videos found.</p>';
-        return;
-    }
-    
-    relatedGrid.innerHTML = videos.map(video => `
-        <div class="video-card" onclick="openVideo(${video.id})">
-            <div class="video-thumbnail">
-                <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjdmYWZjIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk0YTBhYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlZpZGVvIFRodW1ibmFpbDwvdGV4dD48L3N2Zz4='">
-                <div class="video-duration">${video.duration}</div>
-            </div>
-            <div class="video-info">
-                <h3 class="video-title">${video.title}</h3>
-            </div>
-        </div>
-    `).join('');
 }
 
 // Utility functions
