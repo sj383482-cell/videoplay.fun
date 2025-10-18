@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Player - VideoPlay.fun</title>
     <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Responsive banner styles */
+        .ad-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .ad-iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Video player adjustments */
+        .video-player-section {
+            margin-bottom: 15px;
+        }
+
+        .related-videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        /* Optional: make video player responsive */
+        #mainVideoPlayer {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -15,8 +44,8 @@
         </div>
     </header>
 
-    <!-- Top Banner 728x90 -->
-    <div style="text-align:center; margin: 10px 0;">
+    <!-- Top Banner -->
+    <div class="ad-container">
         <script type="text/javascript">
             atOptions = {
                 'key' : '43fc97b9028c31d1675dcb4dc9f5321f',
@@ -48,7 +77,7 @@
             </div>
 
             <!-- Native Banner -->
-            <div style="text-align:center; margin: 15px 0;">
+            <div class="ad-container">
                 <script async="async" data-cfasync="false" src="//pl27820359.effectivegatecpm.com/8f9d0b9283e8a567681ee534de56afd3/invoke.js"></script>
                 <div id="container-8f9d0b9283e8a567681ee534de56afd3"></div>
             </div>
@@ -61,8 +90,8 @@
                 </div>
             </div>
 
-            <!-- Bottom Banner 468x60 -->
-            <div style="text-align:center; margin: 10px 0;">
+            <!-- Bottom Banner -->
+            <div class="ad-container">
                 <script type="text/javascript">
                     atOptions = {
                         'key' : 'adf0bc0c2f371b15e8d05c2e17ec8305',
@@ -88,5 +117,19 @@
     </footer>
 
     <script src="assets/script.js"></script>
+
+    <!-- Optional: Mobile banner adjustment -->
+    <script>
+        // Adjust fixed banners for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const topBanner = document.querySelectorAll('.ad-container iframe');
+            topBanner.forEach(iframe => {
+                if(window.innerWidth <= 768){
+                    iframe.width = 320;
+                    iframe.height = (iframe.height/iframe.width)*320; // maintain aspect ratio
+                }
+            });
+        });
+    </script>
 </body>
 </html>
