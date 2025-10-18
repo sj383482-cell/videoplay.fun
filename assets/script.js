@@ -165,8 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.key === 'Enter') {
                 searchVideos();
             }
-        });
-    }
+      }
     // 🔗 Open SmartLink First, then video page
 function openVideoWithAd(videoId) {
     // Pehle Smartlink new tab me open karega
@@ -177,5 +176,4 @@ function openVideoWithAd(videoId) {
         window.location.href = `video.html?id=${videoId}`;
     }, 1000);
 }
-
 });
