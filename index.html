@@ -61,6 +61,29 @@
             color: #c62828;
             font-weight: bold;
         }
+
+        /* AD Container */
+        .ad-container {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        /* Make iframe ads responsive */
+        .ad-container iframe {
+            width: 100% !important;
+            max-width: 728px;
+            height: auto !important;
+        }
+
+        /* Mobile adjustments */
+        @media(max-width:768px) {
+            .ad-container iframe {
+                max-width: 320px;
+                height: 50px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -71,6 +94,20 @@
             <p class="tagline">Watch amazing videos for free</p>
         </div>
     </header>
+
+    <!-- Top Banner 728x90 / 320x50 mobile -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '43fc97b9028c31d1675dcb4dc9f5321f',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/43fc97b9028c31d1675dcb4dc9f5321f/invoke.js"></script>
+    </div>
 
     <!-- Main Content -->
     <main class="main">
@@ -91,6 +128,26 @@
                 <!-- Videos will be loaded here dynamically -->
             </div>
 
+            <!-- Native Banner -->
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="//pl27820359.effectivegatecpm.com/8f9d0b9283e8a567681ee534de56afd3/invoke.js"></script>
+                <div id="container-8f9d0b9283e8a567681ee534de56afd3"></div>
+            </div>
+
+            <!-- Bottom Banner 468x60 / 320x50 mobile -->
+            <div class="ad-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'adf0bc0c2f371b15e8d05c2e17ec8305',
+                        'format' : 'iframe',
+                        'height' : 60,
+                        'width' : 468,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/adf0bc0c2f371b15e8d05c2e17ec8305/invoke.js"></script>
+            </div>
+
             <!-- Loading Indicator -->
             <div class="loading" id="loading">
                 <div class="spinner"></div>
@@ -98,6 +155,9 @@
             </div>
         </div>
     </main>
+
+    <!-- Popunder Ad -->
+    <script type='text/javascript' src='//pl27816605.effectivegatecpm.com/d7/d9/b5/d7d9b5e6ca04b307c731ac045a8205f0.js'></script>
 
     <!-- Footer -->
     <footer class="footer">
