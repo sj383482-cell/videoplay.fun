@@ -6,32 +6,44 @@
     <title>Video Player - VideoPlay.fun</title>
     <link rel="stylesheet" href="assets/style.css">
     <style>
-        /* Responsive banner styles */
+        /* Container for ads */
         .ad-container {
+            width: 100%;
             text-align: center;
             margin: 10px 0;
+            overflow: hidden;
         }
 
-        .ad-iframe {
-            max-width: 100%;
-            height: auto;
+        /* Make iframe banners responsive */
+        .ad-container iframe {
+            width: 100% !important;
+            max-width: 728px;
+            height: auto !important;
         }
 
-        /* Video player adjustments */
-        .video-player-section {
-            margin-bottom: 15px;
+        /* Mobile specific adjustments */
+        @media(max-width:768px) {
+            .ad-container iframe {
+                max-width: 320px;
+                height: 50px !important;
+            }
         }
 
-        .related-videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-        }
-
-        /* Optional: make video player responsive */
+        /* Video player responsive */
         #mainVideoPlayer {
             width: 100%;
             height: auto;
+        }
+
+        /* Related videos responsive grid */
+        .related-videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .video-player-section {
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -44,7 +56,7 @@
         </div>
     </header>
 
-    <!-- Top Banner -->
+    <!-- Top Banner 728x90 / 320x50 mobile -->
     <div class="ad-container">
         <script type="text/javascript">
             atOptions = {
@@ -62,14 +74,10 @@
     <main class="main">
         <div class="container">
             <div class="video-player-section">
-                <video 
-                    id="mainVideoPlayer" 
-                    controls 
-                    autoplay 
-                    class="main-video-player">
+                <video id="mainVideoPlayer" controls autoplay>
                     Your browser does not support the video tag.
                 </video>
-                
+
                 <div class="video-info">
                     <h2 id="videoTitle">Video Title</h2>
                     <p id="videoDescription">Video description will appear here</p>
@@ -90,7 +98,7 @@
                 </div>
             </div>
 
-            <!-- Bottom Banner -->
+            <!-- Bottom Banner 468x60 / 320x50 mobile -->
             <div class="ad-container">
                 <script type="text/javascript">
                     atOptions = {
@@ -117,19 +125,5 @@
     </footer>
 
     <script src="assets/script.js"></script>
-
-    <!-- Optional: Mobile banner adjustment -->
-    <script>
-        // Adjust fixed banners for mobile
-        document.addEventListener('DOMContentLoaded', () => {
-            const topBanner = document.querySelectorAll('.ad-container iframe');
-            topBanner.forEach(iframe => {
-                if(window.innerWidth <= 768){
-                    iframe.width = 320;
-                    iframe.height = (iframe.height/iframe.width)*320; // maintain aspect ratio
-                }
-            });
-        });
-    </script>
 </body>
 </html>
