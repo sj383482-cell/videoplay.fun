@@ -3,35 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Player - VideoPlay.fun</title>
+    <title>VideoPlay.fun - Free Video Streaming</title>
     <link rel="stylesheet" href="assets/style.css">
     <style>
-        /* Responsive banner styles */
-        .ad-container {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .ad-iframe {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Video player adjustments */
-        .video-player-section {
-            margin-bottom: 15px;
-        }
-
-        .related-videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-        }
-
-        /* Optional: make video player responsive */
-        #mainVideoPlayer {
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .footer-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 15px;
+            cursor: pointer;
+        }
+        
+        .footer-links a:hover {
+            color: #333;
+        }
+        
+        .age-warning {
+            background: #ffebee;
+            border: 1px solid #f44336;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            color: #c62828;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -39,97 +67,135 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="index.html" class="back-btn">← Back to Videos</a>
             <h1 class="logo">VideoPlay.fun</h1>
+            <p class="tagline">Watch amazing videos for free</p>
         </div>
     </header>
 
-    <!-- Top Banner -->
-    <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '43fc97b9028c31d1675dcb4dc9f5321f',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/43fc97b9028c31d1675dcb4dc9f5321f/invoke.js"></script>
-    </div>
-
-    <!-- Main Video Player -->
+    <!-- Main Content -->
     <main class="main">
         <div class="container">
-            <div class="video-player-section">
-                <video 
-                    id="mainVideoPlayer" 
-                    controls 
-                    autoplay 
-                    class="main-video-player">
-                    Your browser does not support the video tag.
-                </video>
-                
-                <div class="video-info">
-                    <h2 id="videoTitle">Video Title</h2>
-                    <p id="videoDescription">Video description will appear here</p>
-                </div>
+            <!-- Age Warning -->
+            <div class="age-warning">
+                ⚠️ 18+ Content Warning: This website contains adult content. Must be 18 years or older to access.
             </div>
 
-            <!-- Native Banner -->
-            <div class="ad-container">
-                <script async="async" data-cfasync="false" src="//pl27820359.effectivegatecpm.com/8f9d0b9283e8a567681ee534de56afd3/invoke.js"></script>
-                <div id="container-8f9d0b9283e8a567681ee534de56afd3"></div>
+            <!-- Search Section -->
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="Search videos..." class="search-input">
+                <button onclick="searchVideos()" class="search-btn">Search</button>
             </div>
 
-            <!-- Related Videos -->
-            <div class="related-videos-section">
-                <h3>Related Videos</h3>
-                <div class="related-videos-grid" id="relatedVideos">
-                    <!-- Related videos will be loaded here -->
-                </div>
+            <!-- Video Grid -->
+            <div class="video-grid" id="videoGrid">
+                <!-- Videos will be loaded here dynamically -->
             </div>
 
-            <!-- Bottom Banner -->
-            <div class="ad-container">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : 'adf0bc0c2f371b15e8d05c2e17ec8305',
-                        'format' : 'iframe',
-                        'height' : 60,
-                        'width' : 468,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/adf0bc0c2f371b15e8d05c2e17ec8305/invoke.js"></script>
+            <!-- Loading Indicator -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                Loading videos...
             </div>
         </div>
     </main>
-
-    <!-- Popunder Ad -->
-    <script type='text/javascript' src='//pl27816605.effectivegatecpm.com/d7/d9/b5/d7d9b5e6ca04b307c731ac045a8205f0.js'></script>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 VideoPlay.fun - All rights reserved</p>
+            <div class="footer-links">
+                <a onclick="showContact()">Contact Us</a>
+                <a onclick="showPrivacyPolicy()">Privacy Policy</a>
+                <a onclick="showTerms()">Terms of Service</a>
+            </div>
         </div>
     </footer>
 
-    <script src="assets/script.js"></script>
+    <!-- Contact Us Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <p>For any queries or support, please contact us at:</p>
+            <p><strong>Email: sj383482@gmail.com</strong></p>
+            <p>We typically respond within 24 hours.</p>
+        </div>
+    </div>
 
-    <!-- Optional: Mobile banner adjustment -->
+    <!-- Privacy Policy Modal -->
+    <div id="policyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Privacy Policy & 18+ Content Warning</h2>
+            <div class="age-warning">
+                STRICT 18+ CONTENT: This website is intended for adults only (18 years and older)
+            </div>
+            <h3>Age Restriction</h3>
+            <p>By accessing this website, you confirm that you are 18 years of age or older. Under no circumstances should minors access this content.</p>
+            
+            <h3>Information Collection</h3>
+            <p>We may collect non-personal information for analytics and website improvement.</p>
+            
+            <h3>Content Disclaimer</h3>
+            <p>All content is for entertainment purposes only. Users are responsible for complying with their local laws.</p>
+            
+            <h3>Contact</h3>
+            <p>For content removal requests or privacy concerns: <strong>sj383482@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Terms of Service</h2>
+            <div class="age-warning">
+                18+ AGE VERIFICATION REQUIRED
+            </div>
+            <h3>Eligibility</h3>
+            <p>You must be at least 18 years old to use this service. By using this website, you warrant that you are of legal age.</p>
+            
+            <h3>Content Usage</h3>
+            <p>All videos are provided for personal entertainment only. Redistribution or commercial use is prohibited.</p>
+            
+            <h3>User Responsibility</h3>
+            <p>Users are solely responsible for their actions and compliance with local laws regarding adult content.</p>
+            
+            <h3>Contact</h3>
+            <p>Email: <strong>sj383482@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <script src="assets/script.js"></script>
     <script>
-        // Adjust fixed banners for mobile
-        document.addEventListener('DOMContentLoaded', () => {
-            const topBanner = document.querySelectorAll('.ad-container iframe');
-            topBanner.forEach(iframe => {
-                if(window.innerWidth <= 768){
-                    iframe.width = 320;
-                    iframe.height = (iframe.height/iframe.width)*320; // maintain aspect ratio
+        // Modal Functions
+        function showContact() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+        
+        function showPrivacyPolicy() {
+            document.getElementById('policyModal').style.display = 'block';
+        }
+        
+        function showTerms() {
+            document.getElementById('termsModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+            document.getElementById('policyModal').style.display = 'none';
+            document.getElementById('termsModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    closeModal();
                 }
             });
-        });
+        }
     </script>
 </body>
 </html>
